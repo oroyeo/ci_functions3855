@@ -36,7 +36,8 @@ def call(dockerRepoName, imageName) {
             stage('Scan Image') {
                 steps {
                     withCredentials([string(credentialsId: 'SnykAuthToken', variable: 'TOKEN')]) {
-                    sh "docker scan --accept-license --login --token $TOKEN --severity high rortega4/${dockerRepoName}:${imageName}"
+                    sh "docker scan --accept-license --login --token $TOKEN"
+                    sh "docker scan --accept-license --severity high rortega4/${dockerRepoName}:${imageName}"
                }
             }
         } 
