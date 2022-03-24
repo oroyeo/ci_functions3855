@@ -35,7 +35,9 @@ def call(dockerRepoName, imageName) {
         }
             stage('Scan Image') {
                 steps {
-                    sh "docker scan --accept-license --severity high rortega4/${dockerRepoName}:${imageName}"
+                    withCredentials([string(credentialsId: 'SnythAuthToken', variable: 'TOKEN')]) {
+                    sh "docker scan --accept-license --login $TOKEN --severity high rortega4/${dockerRepoName}:${imageName}"
+               }
             }
         } 
     }
