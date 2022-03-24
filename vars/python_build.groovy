@@ -28,7 +28,7 @@ def call(dockerRepoName, imageName) {
                 steps { 
                     withCredentials([string(credentialsId: 'DockerHub', variable: 'TOKEN')]) { 
                     sh "docker login -u 'rortega4' -p '$TOKEN' docker.io" 
-                    sh "docker build -t ${dockerRepoName}:latest --tag rortega4/${dockerRepoName}:${imageName} ." 
+                    sh "docker build -t ${dockerRepoName}:latest --tag rortega4/${dockerRepoName}:${imageName} ${dockerRepoName}" 
                     sh "docker push rortega4/${dockerRepoName}:${imageName}" 
                 } 
             } 
