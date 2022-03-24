@@ -35,7 +35,7 @@ def call(dockerRepoName, imageName) {
         }
             stage('Scan Image') {
                 steps {
-                    sh "docker scan --accept-license --excluse-base --file ${dockerRepoName}/Dockerfile rortega4/${dockerRepoName}:${imageName}"
+                    sh "docker scan --accept-license --exclude-base --file ${dockerRepoName}/Dockerfile rortega4/${dockerRepoName}:${imageName}"
             }
         } 
     }
