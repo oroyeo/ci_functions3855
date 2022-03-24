@@ -35,7 +35,7 @@ def call(dockerRepoName, imageName) {
         }
             stage('Scan Image') {
                 steps {
-                    sh "docker scan rortega/${dockerRepoName}:${imageName}"
+                    sh "docker scan -y rortega/${dockerRepoName}:${imageName}"
             }
         } 
     }
