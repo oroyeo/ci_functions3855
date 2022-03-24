@@ -4,12 +4,12 @@ def call(dockerRepoName, imageName) {
         stages { 
             stage('Build') { 
                 steps { 
-                    sh 'pip install -r requirements.txt' 
+                    sh 'pip install -r ${dockerRepoName}/requirements.txt' 
                 } 
             } 
             stage('Python Lint') { 
                 steps { 
-                    sh 'pylint-fail-under --fail_under 5.0 *.py' 
+                    sh 'pylint-fail-under --fail_under 5.0 ${dockerRepoName}/*.py' 
                 } 
             }
             stage('Zip Artifacts') {
