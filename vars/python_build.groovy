@@ -4,19 +4,19 @@ def call(dockerRepoName, imageName) {
         stages { 
             stage('Build') { 
                 steps { 
-                    echo '${dockerRepoName} test'
-                    sh 'pip install -r ${dockerRepoName}/requirements.txt' 
+                    echo "${dockerRepoName} test"
+                    sh "pip install -r ${dockerRepoName}/requirements.txt" 
                 } 
             } 
             stage('Python Lint') { 
                 steps { 
-                    sh 'pylint-fail-under --fail_under 5.0 ${dockerRepoName}/*.py' 
+                    sh "pylint-fail-under --fail_under 5.0 ${dockerRepoName}/*.py" 
                 } 
             }
             stage('Zip Artifacts') {
                 steps {
                     script {
-                        zip archive: true, dir: '', glob: '*.py', zipFile: '${dockerRepoName}_app.zip', overwrite: true
+                        zip archive: true, dir: '', glob: '*.py', zipFile: "${dockerRepoName}_app.zip", overwrite: true
                     }
                     archiveArtifacts artifacts: 'app.zip', fingerprint: true
             }
