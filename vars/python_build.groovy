@@ -32,7 +32,12 @@ def call(dockerRepoName, imageName) {
                     sh "docker push rortega4/${dockerRepoName}:${imageName}" 
                 } 
             } 
+        }
+            stage('Scan Image') {
+                steps {
+                    sh "docker scan rortega/${dockerRepoName}:${imageName}"
+            }
         } 
     }
-}
+  }
 }
