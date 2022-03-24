@@ -4,6 +4,7 @@ def call(dockerRepoName, imageName) {
         stages { 
             stage('Build') { 
                 steps { 
+                    echo 'test'
                     sh 'pip install -r ${dockerRepoName}/requirements.txt' 
                 } 
             } 
