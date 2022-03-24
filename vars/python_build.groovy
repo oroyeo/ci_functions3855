@@ -15,7 +15,7 @@ def call(dockerRepoName, imageName) {
             stage('Zip Artifacts') {
                 steps {
                     script {
-                        zip archive: true, dir: '', glob: '*.py', zipFile: 'app.zip', overwrite: true
+                        zip archive: true, dir: '', glob: '*.py', zipFile: '${dockerRepoName}_app.zip', overwrite: true
                     }
                     archiveArtifacts artifacts: 'app.zip', fingerprint: true
             }
